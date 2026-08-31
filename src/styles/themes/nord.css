@@ -1,0 +1,93 @@
+/* Nord light/dark theme */
+:root {
+  --theme-font-family: "Rubik", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --card-radius: 0.5em;
+  --tag-border: var(--metadata-border);
+  --tag-border-active: #8fbcbb;
+  --tag-radius: 0.25em;
+  --tag-padding: 0.25em 0.4em;
+}
+
+.card {
+  background: #ececec;
+  --text-fg: #434c5e;
+  --text-fg-faint: #4c566a;
+  --text-bg-selected: #eceff4;
+  --card-bg: #fff;
+  --card-border: transparent;
+  --card-shadow: #b8c2d740;
+  --divider: #d8dee9;
+  --metadata-bg: #eceff480;
+  --metadata-border: #d8dee9;
+  --tag-fg: #4c566a;
+  --tag-bg: transparent;
+  --tag-fg-active: #8fbcbb;
+  --tag-bg-active: transparent;
+  --link-fg: #5e81ac;
+  --link-fg-active: #8fbcbb;
+  --bold-fg: #bf616a;
+  --italic-fg: #b48ead;
+  --bold-italic-fg: #d08770;
+  --underline-fg: #a3be8c;
+  --cloze-fg: #5e81ac;
+  --code-bg: #eceff4;
+  --code-border: #d8dee9;
+}
+
+.card.night_mode,
+.card.nightMode {
+  background: #242933;
+  --text-fg: #e7e9f0;
+  --text-fg-faint: #d8dee9;
+  --text-bg-selected: #3b4252;
+  --card-bg: #2e3440;
+  --card-border: transparent;
+  --card-shadow: #0f111540;
+  --divider: #4c566a;
+  --metadata-bg: #3b425280;
+  --metadata-border: #4c566a;
+  --tag-fg: #d8dee9;
+  --tag-bg: transparent;
+  --tag-fg-active: #8fbcbb;
+  --tag-bg-active: transparent;
+  --link-fg: #81a1c1;
+  --link-fg-active: #8fbcbb;
+  --bold-fg: #bf616a;
+  --italic-fg: #ebcb8b;
+  --bold-italic-fg: #d08770;
+  --underline-fg: #a3be8c;
+  --cloze-fg: #88c0d0;
+  --code-bg: #3b4252;
+  --code-border: #4c566a;
+}
+
+.prettify-tag { font-style: italic; }
+
+.prettify-divider:not(.prettify-divider--extra) {
+  border-bottom-style: solid;
+}
+
+a:hover,
+a:active {
+  background: var(--text-bg-selected);
+  border-radius: 0.25em;
+}
+
+b,
+strong { color: var(--bold-fg); }
+
+i,
+em { color: var(--italic-fg); }
+
+b > i,
+i > b,
+strong > em,
+em > strong { color: var(--bold-italic-fg); }
+
+u { color: var(--underline-fg); }
+
+code {
+  background: var(--text-bg-selected);
+  border-radius: 0.2em;
+  padding: 0.1em 0.3em;
+}

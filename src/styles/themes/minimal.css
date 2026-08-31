@@ -2,6 +2,7 @@
 :root {
   --card-radius: 0.25em;
   --tag-border: transparent;
+  --tag-border-active: transparent;
   --tag-radius: 0.2em;
   --tag-padding: 0.25em;
 }
