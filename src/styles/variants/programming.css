@@ -1,0 +1,41 @@
+/* Programming card */
+.prettify-code {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: var(--font-size-small);
+  line-height: 1.55;
+  margin: 0 2em 2em;
+  max-width: calc(100% - 4em);
+  min-width: 0;
+  overflow-x: auto;
+  padding: 1em;
+  tab-size: 2;
+  text-align: left;
+  white-space: pre;
+  width: calc(100% - 4em);
+}
+
+.prettify-code .org-src-container,
+.prettify-code pre {
+  margin: 0;
+}
+
+.prettify-code pre,
+.prettify-code code {
+  background: transparent;
+  font: inherit;
+  overflow-wrap: normal;
+  padding: 0;
+  white-space: inherit;
+}
+
+@media (max-width: 40em) {
+  .prettify-code {
+    margin: 0 1em 1em;
+    max-width: calc(100% - 2em);
+    width: calc(100% - 2em);
+  }
+}

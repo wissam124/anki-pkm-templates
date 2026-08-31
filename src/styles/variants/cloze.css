@@ -1,0 +1,5 @@
+/* Cloze card */
+.cloze {
+  color: var(--cloze-fg);
+  font-weight: 600;
+}

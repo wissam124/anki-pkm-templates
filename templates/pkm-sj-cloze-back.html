@@ -1,0 +1,67 @@
+<!-- PKM SJ Cloze -->
+<div class="prettify-flashcard">
+  <div class="prettify-deck" data-prettify-order="0">{{Deck}}</div>
+  <div class="prettify-metadata" data-prettify-order="10">
+    {{#Source}}<div class="prettify-metadata__source">{{Source}}</div>{{/Source}}
+    {{#Section}}<div class="prettify-metadata__section">{{Section}}</div>{{/Section}}
+  </div>
+  {{#Tags}}<div class="prettify-tags" data-prettify-order="20">{{clickable:Tags}}</div>{{/Tags}}
+  <div class="prettify-field prettify-field--front" data-prettify-order="1">{{edit:cloze:Text}}</div>
+  {{#Extra}}
+  <div class="prettify-divider" id="answer" data-prettify-order="2"></div>
+  <div class="prettify-field prettify-field--back" data-prettify-order="3">{{Extra}}</div>
+  {{/Extra}}
+</div>
+
+<script>
+  (() => {
+    const card = document.querySelector(".prettify-flashcard");
+    if (!card) return;
+
+    // Anki's LaTeX renderer can leave following nodes outside the wrapper.
+    // Dedicated ordering attributes let us restore the complete card safely.
+    Array.from(document.querySelectorAll("[data-prettify-order]"))
+      .sort((left, right) => Number(left.dataset.prettifyOrder) - Number(right.dataset.prettifyOrder))
+      .forEach((element) => card.appendChild(element));
+
+    const metadata = card.querySelector(".prettify-metadata");
+    if (metadata && !metadata.children.length) metadata.remove();
+
+    const leafName = (value) => {
+      const names = value.split("::").filter(Boolean);
+      return (names.pop() || value).trim();
+    };
+    const tags = card.querySelector(".prettify-tags");
+    if (tags) {
+      const children = Array.from(tags.children);
+      if (children.length) {
+        children.forEach((element) => {
+          element.classList.add("prettify-tag");
+          element.textContent = leafName(element.textContent);
+        });
+      } else {
+        const names = tags.textContent.split(/\s+/).filter(Boolean).map(leafName);
+        while (tags.firstChild) tags.removeChild(tags.firstChild);
+        names.forEach((name) => {
+          const tag = document.createElement("span");
+          tag.className = "prettify-tag";
+          tag.textContent = name;
+          tags.appendChild(tag);
+        });
+      }
+    }
+
+    const deck = card.querySelector(".prettify-deck");
+    if (deck) {
+      const names = deck.textContent.split("::").filter(Boolean);
+      while (deck.firstChild) deck.removeChild(deck.firstChild);
+      names.forEach((name, index) => {
+        if (index) deck.appendChild(document.createTextNode("\u00a0/\u00a0"));
+        const subdeck = document.createElement("span");
+        subdeck.className = "prettify-subdeck";
+        subdeck.textContent = name;
+        deck.appendChild(subdeck);
+      });
+    }
+  })();
+</script>

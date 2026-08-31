@@ -1,0 +1,20 @@
+/* Math card */
+.prettify-field--extra {
+  color: var(--text-fg-faint);
+  font-size: var(--font-size-small);
+  margin-top: 0;
+}
+
+.prettify-divider--extra {
+  border-bottom-color: var(--text-bg-selected);
+  margin: 0 2em 1em;
+}
+
+.prettify-field--extra img.latex,
+.prettify-field--extra img[src*="latex-"] {
+  max-width: 85% !important;
+}
+
+@media (max-width: 40em) {
+  .prettify-divider--extra { margin: 0 1em 1em; }
+}
