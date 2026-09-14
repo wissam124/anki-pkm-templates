@@ -68,3 +68,21 @@ font files.
 
 The `{{edit:...}}` and `{{clickable:Tags}}` filters continue to require the
 corresponding Anki add-ons on clients where those custom filters are used.
+
+## Experimental MathJax fitting
+
+On the `experiment/mathjax-fit-scroll` branch, all front/back templates fit
+oversized MathJax CommonHTML equations to their field width. Equations that
+already fit retain their original size. Wide equations shrink no further than
+80% of their natural size; any remaining overflow scrolls horizontally. Fitting
+is recalculated after rendering, font loading, and window or field-width changes.
+This applies to regular fields and the Programming source-code fields. SVG and
+legacy MathJax output are not resized by this experiment.
+
+To test, back up your current Anki templates and Styling, then replace all three
+boxes with the generated HTML pair and chosen stylesheet for your note type.
+Remove any separately pasted fitting script or fixed 80% font-size rule first.
+Check both sides with short and long equations, narrow and wide windows, and
+successive cards. Also check fractions, subscripts, and ordinary field content
+for clipping or unwanted scrollbars. Restoring your backed-up Anki content
+reverts the test; switching Git branches alone does not change cards in Anki.

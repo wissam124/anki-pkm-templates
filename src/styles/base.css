@@ -32,6 +32,8 @@
 .prettify-field {
   margin: 2em;
   min-width: 0;
+  /* Math too wide to fit at 80% remains readable via horizontal scrolling. */
+  overflow-x: auto;
 }
 
 .prettify-field--back {
