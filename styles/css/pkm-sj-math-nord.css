@@ -34,7 +34,7 @@
 .prettify-field {
   margin: 2em;
   min-width: 0;
-  /* Math too wide to fit at 80% remains readable via horizontal scrolling. */
+  /* Keep wide content inside the card without reducing its readable size. */
   overflow-x: auto;
 }
 
