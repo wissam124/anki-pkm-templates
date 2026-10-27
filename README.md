@@ -37,6 +37,12 @@ Do not edit generated files directly; regeneration will overwrite them.
 After making a change, run the generator and copy the relevant generated files
 into Anki.
 
+Run the regression checks with:
+
+```sh
+python3 -m unittest discover
+```
+
 ## Files to copy into Anki
 
 First copy the HTML pair for the note type:
@@ -60,6 +66,23 @@ Then choose one stylesheet for that note type:
 Changing theme requires replacing only the content of Anki's Styling box; the
 front and back templates stay the same.
 
+When installing or updating a note type:
+
+1. Back up the existing Anki Front Template, Back Template, and Styling boxes.
+2. Copy both HTML files and one stylesheet from the same repository revision.
+3. Confirm the comment at the top of each generated file names the intended
+   note type and theme, and that all three comments show the same build ID.
+4. Preview both sides with ordinary text, wide content, tags, and night mode.
+
+The expected note-type fields are:
+
+- Basic: `Front`, `Back`, `Source`, and `Section` (`Back` is required).
+- Cloze: `Text`, `Extra`, `Source`, and `Section`.
+- Math: `Front`, `Back`, `Extra`, `Source`, and `Section` (`Back` is required).
+- Programming: `Front`, `Back`, `Question Source Code`, `Answer Source Code`,
+  `Source`, and `Section`. At least `Back` or `Answer Source Code` should be
+  populated so the answer divider is not followed by an empty answer.
+
 The generated HTML contains its complete JavaScript, and each generated
 stylesheet is self-contained. Anki does not need access to the source directory
 or to the generator. Nord uses Rubik when it is installed and otherwise falls
@@ -68,6 +91,15 @@ font files.
 
 The `{{edit:...}}` and `{{clickable:Tags}}` filters continue to require the
 corresponding Anki add-ons on clients where those custom filters are used.
+
+Programming source-code fields use the template's own code box. Org-exported
+syntax-colour spans are preserved, while Org's source-container, `pre`, and
+`code` backgrounds, spacing, fonts, and wrapping are normalized by the template.
+
+The shared size defaults can be adjusted independently with
+`--font-size-answer`, `--font-size-extra`, `--font-size-metadata`, and
+`--font-size-code`. They default to the backward-compatible
+`--font-size-small` value.
 
 Fields preserve the natural size of wide content, including MathJax equations,
 and provide horizontal scrolling when it does not fit within the card.
